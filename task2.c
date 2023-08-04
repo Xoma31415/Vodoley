@@ -49,16 +49,38 @@ int solution_of_task(int a_, int b_, int c_, int R_)
         //The middle barrel make to fill full
         for (;current_litters_for_middle != b_;)
         {
-            current_litters_for_biggest = current_litters_for_biggest - (a_ - current_liters_for_smaller);
-            current_liters_for_smaller = a_;
-            count++;
-            if (current_litters_for_biggest == R_)
+            if (a_ > current_litters_for_biggest)
+            {
+                for (;current_litters_for_biggest != 0;)
+                {
+                    current_liters_for_smaller++;
+                    current_litters_for_biggest--;
+                }
+
+                printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
+
+                break;
+            }
+            
+            if (current_litters_for_biggest == R_ || current_litters_for_middle == R_)
             {
                 printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
                 printf("The task is completed\n");
                 return 0;
             }
 
+            current_litters_for_biggest = current_litters_for_biggest - (a_ - current_liters_for_smaller);
+            current_liters_for_smaller = a_;
+            count++;
+
+            if (current_litters_for_biggest == R_ || current_litters_for_middle == R_)
+            {
+                printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
+                printf("The task is completed\n");
+                return 0;
+            }
+
+            // printf("lol\n"); 
             printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
 
             for (; current_liters_for_smaller != 0; current_liters_for_smaller--)
@@ -71,6 +93,13 @@ int solution_of_task(int a_, int b_, int c_, int R_)
                 current_litters_for_middle++;
             }
             count++;
+            // printf("lol\n");
+            if (current_litters_for_biggest == R_ || current_litters_for_middle == R_)
+            {
+                printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
+                printf("The task is completed\n");
+                return 0;
+            }
             printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
         }
 
@@ -78,6 +107,7 @@ int solution_of_task(int a_, int b_, int c_, int R_)
         current_litters_for_biggest = current_litters_for_biggest + current_litters_for_middle;
         current_litters_for_middle = 0;
         count++;
+        // printf("lol\n");
         printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
         if (current_liters_for_smaller != 0)
         {
@@ -86,6 +116,7 @@ int solution_of_task(int a_, int b_, int c_, int R_)
             current_liters_for_smaller = 0;
 
             count++;
+            // printf("lol\n");
             printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count, current_liters_for_smaller, current_litters_for_middle, current_litters_for_biggest);
         }
 

@@ -7,8 +7,8 @@ void menu(int* ans_, One_link_list** head_list)
     {
         printf("1.Add into head 2.Add into tail 3.Delete from head\n");
         printf("4.Delete from tail 5.Printf from head 6.Print from tail\n");
-        printf("7.Fill list random value 8.Clean all list 9.Edit one element of list\n");
-        printf("\t10.Back to main menu\n");
+        printf("7.Fill list random value 8.Clean all list 9.Edit from head\n");
+        printf("10.Edit from tail 11.Back to main menu\n");
         printf(">_");
         scanf("%d", ans_);
 
@@ -44,16 +44,17 @@ void menu(int* ans_, One_link_list** head_list)
             *head_list = NULL;
             break;
         case 9:
-            edit_list(head_list);
             break;
         case 10:
+            break;
+        case 11:
             break;
         default:
             printf("Please, enter correct value!!\n\n");
             break;
         }
         
-    } while (*ans_ != 10);
+    } while (*ans_ != 11);
     
 }
 
@@ -215,7 +216,24 @@ int deep_clean(One_link_list** list_)
     return 0;
 }
 
-int edit_list(One_link_list** list_)
+int edit_head(One_link_list** list_)
+{ 
+    if (*list_ == NULL)
+    {
+        printf("List is empty!\n");
+        return 0;
+    }
+    
+    int data_cur = 0;
+    printf("Enter the new value of data:\n");
+    printf(">_");
+    scanf("%d", &data_cur);
+
+    (*list_)->data = data_cur;
+    return 0;
+}
+
+int edit_tail(One_link_list** list_)
 {
     if (*list_ == NULL)
     {
@@ -223,33 +241,19 @@ int edit_list(One_link_list** list_)
         return 0;
     }
 
-    One_link_list* temp = *list_;
-    int count = 0;
-    int num_order = 0;
     int data_cur = 0;
+    One_link_list* temp = *list_;
 
-    print_from_head(temp);
-    printf("Choose the number of order:\n");
-    printf(">_");
-    scanf("%d", &num_order);
-    
-
-    for (;count != num_order; count++)
-    {
-        if (temp->next == NULL)
-        {
-            printf("Element is not exist!\n");
-            return 0;
-        }
-
-        temp = temp->next;
-    }
-
-    printf("Enter the correct data:\n");
+    printf("Enter the new value of data:\n");
     printf(">_");
     scanf("%d", &data_cur);
 
-    temp->data = data_cur;
+    for (; temp->next == NULL;)
+    {
+        temp = temp->next; 
+    }
 
-    return 0;
+    temp->data = data_cur;
+    return 0;  
+
 }

@@ -17,4 +17,5 @@ int print_from_tail(One_link_list*);
 void fill_random(One_link_list**);
 int deep_clean(One_link_list**);
 void menu(int* , One_link_list**);
-int edit_list(One_link_list**);
+int edit_head(One_link_list**);
+int edit_tail(One_link_list**);

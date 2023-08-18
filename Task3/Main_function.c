@@ -21,7 +21,14 @@ int union_list(One_link_list** first_, One_link_list** second_, One_link_list** 
     One_link_list* p_s = *second_;
     One_link_list* p_f = *first_;
     int count = 0;
-    _union_ = first_;
+
+    for (;p_f->next != NULL;)
+    {
+        push_tail(_union_, p_f->data);
+        p_f = p_f->next;
+    }
+    
+    p_f = *first_;
 
     for (;p_s->next != NULL;)
     {

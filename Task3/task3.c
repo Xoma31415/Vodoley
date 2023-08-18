@@ -11,9 +11,7 @@ int main()
 {
     One_link_list* head_first = NULL;
     One_link_list* head_second = NULL;
-    One_link_list* union_ = NULL;
-    One_link_list* cross_ = NULL;
-    One_link_list* less_ = NULL;
+    One_link_list* new_list = NULL;
 
     int ans = 0;
 
@@ -34,13 +32,13 @@ int main()
             menu(&ans, &head_second);
             break;
         case 3:
-            union_list(&head_first, &head_second, &union_);
+            union_list(&head_first, &head_second, &new_list);
             break;
         case 4:
-            cross_list(&head_first, &head_second, &cross_);
+            cross_list(&head_first, &head_second, &new_list);
             break;
         case 5:
-            less_list(&head_first, &head_second, &less_);
+            less_list(&head_first, &head_second, &new_list);
             break;
         case 0:
             printf("Good bye, user!\n");

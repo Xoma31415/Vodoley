@@ -10,40 +10,51 @@ void main_menu()
 
 }
 
-void union_list(One_link_list** first_, One_link_list** second_, One_link_list** _union_)
+int union_list(One_link_list** first_, One_link_list** second_, One_link_list** _union_)
 {
-    One_link_list* p_s, *p_f, *such_el;
-    int count = 0;
-
-    such_el = NULL;
-
-    p_s = *second_;
-    p_f = *first_;
-
-    //You need to make a full this solution
-    for (;p_f->next != NULL;)
+    if (*first_ == NULL || *second_ == NULL)
     {
-        for (;p_s->next != NULL;)
+        printf("This Operation is impossible!\n");
+        return 0;
+    }
+
+    One_link_list* p_s = *second_;
+    One_link_list* p_f = *first_;
+    int count = 0;
+    _union_ = first_;
+
+    for (;p_s->next != NULL;)
+    {
+        for (;p_f->next != NULL;)
         {
-            if (p_s->data != p_f->data)
-            {
-                push_tail(_union_, p_s->data);
-                p_s = p_s->next;
-            } else
-            {
-                p_s = p_s->next;
-            }            
+            if (p_f->data == p_s->data) count++;
+            p_f = p_f->next;
         }
-        p_s = *second_;
-        p_f = p_f->next;
+
+        if (count == 0) push_tail(_union_, p_s->data);
+        p_f = *first_;
+        p_s = p_s->next;      
+        
     }
     
+   
+    
     print_from_head(*_union_);
+    deep_clean(_union_);
+    *_union_ = NULL;
+
+    return 0;
     
 }
 
-void cross_list(One_link_list** first_, One_link_list** second_, One_link_list** _cross_)
+int cross_list(One_link_list** first_, One_link_list** second_, One_link_list** _cross_)
 {
+    if (*first_ == NULL || *second_ == NULL)
+    {
+        printf("This Operation is impossible!\n");
+        return 0;
+    }
+
     One_link_list* p_f, *p_s;
     p_f = *first_;
     p_s = *second_;
@@ -67,10 +78,20 @@ void cross_list(One_link_list** first_, One_link_list** second_, One_link_list**
     }
     
     print_from_head(*_cross_);
+    deep_clean(_cross_);
+    *_cross_ = NULL;
+
+    return 0;
 }
 
-void less_list(One_link_list** first_, One_link_list** second_, One_link_list** _less_)
+int less_list(One_link_list** first_, One_link_list** second_, One_link_list** _less_)
 {
+    if (*first_ == NULL || *second_ == NULL)
+    {
+        printf("This Operation is impossible!\n");
+        return 0;
+    }
+
     One_link_list* p_f, *p_s;
     p_f = *first_;
     p_s = *second_;
@@ -102,4 +123,8 @@ void less_list(One_link_list** first_, One_link_list** second_, One_link_list** 
         
     }
     print_from_head(*_less_);
+    deep_clean(_less_);
+    *_less_ = NULL;
+
+    return 0;
 }

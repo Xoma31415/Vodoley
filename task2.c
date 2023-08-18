@@ -2,8 +2,6 @@
 #include <stdlib.h>
 
 int solution_of_task(int, int, int, int);
-//Displays pics of solution this task
-// void print_barrel(int, int, int);
 
 int main ()
 {
@@ -25,8 +23,15 @@ int main ()
 
     } while (b > c || a > c);
 
-    printf("Enter the capacity that you want to find\n>_");
-    scanf("%d", &R);
+    
+    do
+    {
+        printf("Enter the capacity that you want to find\n>_");
+        scanf("%d", &R);
+    } while (R < c);
+    
+
+
     solution_of_task(a, b, c, R);
 
     system("PAUSE");
@@ -123,51 +128,4 @@ int solution_of_task(int a_, int b_, int c_, int R_)
     } while (1);
     
 
-    // for (; b_ != b;)
-    // {
-    //     c_ = c_ - (a - a_);
-    //     a_ = a;
-    //     count_++;
-    //     if (c_ == R)
-    //     {
-    //         printf("%d) There are %d liters in smaller barrel, %d liters in middle barrel, %d liters in biggest barrel\n", count_, a_, b_, c_);
-    //         printf("The task is completed\n");
-    //         return 0;
-    //     }
-
-    //     printf("%d) %d liters in smaller, %d liters in middle, %d liters in biggest\n", count_, a_, b_, c_);
-
-    //     for (;a_ != 0;a_--)
-    //     {
-    //         if (b_ == b)
-    //         {
-    //             break;
-    //         }
-
-    //         b_++;
-    //     }
-    //     count_++;
-    //     printf("%d) %d liters in smaller, %d liters in middle, %d liters in biggest\n", count_, a_, b_, c_);
-    // }
-     
-    // c_ = c_ + b_;
-    // b_ = 0;
-    // count_++;
-    // printf("%d) %d liters in smaller, %d liters in middle, %d liters in biggest\n", count_, a_, b_, c_);
-    // if (a_ != 0)
-    // {
-    //     b_ = a_;
-    //     a_ = 0;
-
-    //     count_++;
-    //     printf("%d) %d liters in smaller, %d liters in middle, %d liters in biggest\n", count_, a_, b_, c_);
-    // }
-    
-    // solution_of_task(a_, b_, c_, count_);
 }
-
-// void print_barrels(int a_, int b_, int c_)
-// {
-//     return 0;
-// }
-// printf("%d) %d liters in smaller, %d liters in middle, %d liters in biggest\n", count_, a_, b_, c_);

@@ -35,6 +35,7 @@ void menu(int* ans_, One_link_list** head_list)
             break;
         case 6:
             print_from_tail(*head_list);
+            printf("\n");
             break;
         case 7:
             fill_random(head_list);
@@ -44,8 +45,10 @@ void menu(int* ans_, One_link_list** head_list)
             *head_list = NULL;
             break;
         case 9:
+            edit_head(head_list);
             break;
         case 10:
+            edit_tail(head_list);
             break;
         case 11:
             break;
@@ -129,12 +132,12 @@ int print_from_head(One_link_list* list_)
     }
     
 
-    for (;list_->next != NULL;)
+    for (;list_ != NULL;)
     {
-        printf("%d \n\n", list_->data);
+        printf("%d ", list_->data);
         list_ = list_->next;
     }
-    printf("%d \n\n", list_->data);
+    printf("\n");
     
     return 0;
 }
@@ -153,8 +156,8 @@ int print_from_tail(One_link_list* list_)
         print_from_tail(tmp->next);
         break;
     }
-    
-    printf("%d \n\n",tmp->data);
+
+    printf("%d ",tmp->data);
     
     return 0;
 }
@@ -248,7 +251,7 @@ int edit_tail(One_link_list** list_)
     printf(">_");
     scanf("%d", &data_cur);
 
-    for (; temp->next == NULL;)
+    for (; temp->next != NULL;)
     {
         temp = temp->next; 
     }
